@@ -1,0 +1,25 @@
+{"title": "Home", "url": "", "pages": [
+	{"title": "Aesthetics", "url": "aesthetics", "pages": [
+		{"title": "Discovery", "url": "discovery"},
+		{"title": "Sensation", "url": "sensation"},
+		{"title": "Fellowship", "url": "fellowship"},
+		{"title": "Challenge", "url": "challenge"},
+		{"title": "Narrative", "url": "narrative"},
+		{"title": "Submission", "url": "submission"},
+		{"title": "Expression", "url": "expression"},
+		{"title": "Fantasy", "url": "fantasy"}
+	]},
+	{"title": "Dynamics", "url": "dynamics"},
+	{"title": "Mechanics", "url": "mechanics", "pages": [
+		{"title": "Board Games", "url": "bg"},
+		{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
+			{"title": "Action Resolution", "url": "action_resolution", "pages": [
+				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"}
+			]},
+			{"title": "Advancement", "url": "advancement"}
+		]},
+		{"title": "Video Games", "url": "vg"}
+	]},
+	{"title": "Contact", "url": "contact"},
+	{"title": "Contribute", "url": "contribute"}
+]}
