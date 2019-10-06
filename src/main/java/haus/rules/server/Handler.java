@@ -19,12 +19,11 @@ public class Handler implements HttpHandler {
 	private static final Logger log = Logger.getLogger(Handler.class.getName());
 
 	private final byte[] indexFile;
-	private final byte[] errorPage;
 	private final Map<String, ByteArray> responses = new HashMap<>();
 
 	public Handler() throws IOException {
 		indexFile = this.getClass().getResourceAsStream("/index.html").readAllBytes();
-		errorPage = new byte[0]; // TODO: populate
+		// faviconFile = this.getClass().getResourceAsStream("/favicon.png").readAllBytes();
 		for (Map.Entry<String, Page> e : PageList.loadPages("/sitemap.json").entrySet()) {
 			responses.put(e.getKey(), new ByteArray(e.getValue().toJson().getBytes(StandardCharsets.UTF_8)));
 		}
@@ -44,12 +43,10 @@ public class Handler implements HttpHandler {
 		}
 		if ("GET".equals(exchange.getRequestMethod())) {
 			String path = exchange.getRequestURI().getPath();
-			if ("/".equals(path)) {
-				respond(exchange, 200, indexFile);
-			} else if (path.startsWith("/json/") && responses.containsKey(path.substring("/json".length()))) {
+			if (path.startsWith("/json/") && responses.containsKey(path.substring("/json".length()))) {
 				respond(exchange, 200, responses.get(path.substring("/json".length())).array);
 			} else {
-				respond(exchange, 404, errorPage);
+				respond(exchange, 200, indexFile);
 			}
 		} else {
 			exchange.sendResponseHeaders(405, 0);
