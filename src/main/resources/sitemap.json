@@ -18,7 +18,8 @@
 				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"},
 				{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"}
 			]},
-			{"title": "Advancement", "url": "advancement"}
+			{"title": "Character Advancement", "url": "character_advancement"},
+			{"title": "Character Creation", "url": "character_creation"}
 		]},
 		{"title": "Video Games", "url": "vg"}
 	]},
