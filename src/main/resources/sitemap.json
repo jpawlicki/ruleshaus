@@ -14,7 +14,9 @@
 		{"title": "Board Games", "url": "bg"},
 		{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
 			{"title": "Action Resolution", "url": "action_resolution", "pages": [
-				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"}
+				{"title": "Dungeon World", "source": "dungeonworldsrd.com", "url": "dungeon_world"},
+				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"},
+				{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"}
 			]},
 			{"title": "Advancement", "url": "advancement"}
 		]},

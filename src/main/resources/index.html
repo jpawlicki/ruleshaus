@@ -1,8 +1,15 @@
 <html>
 	<head>
-		<title></title>
+		<title>rule.haus</title>
 		<!-- TODO - Title -->
 		<!-- TODO - Favicon -->
+		<meta name="viewport" content="width=device-width" />
+		<script>
+			// Redirect to secure context if possible, since we use subtle.crypto for hashing.
+			if (window.isSecureContext != undefined && !window.isSecureContext && location.protocol != "https:") {
+				location.replace("https:" + window.location.href.substring(window.location.protocol.length));
+			}
+		</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
 
 		<style>
@@ -165,7 +172,11 @@
 			}
 
 			async function hash(text) {
-				return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder('utf-8').encode(text)))).map(b => ('00' + b.toString(16)).slice(-2)).join('');
+				if (crypto.subtle != undefined) {
+					return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder('utf-8').encode(text)))).map(b => ('00' + b.toString(16)).slice(-2)).join('');
+				} else {
+					return "";
+				}
 			}
 
 			async function renderPage(url, data) {
@@ -209,7 +220,7 @@
 					accumulatedUrl += "/" + e.url;
 					let a = document.createElement("a");
 					a.setAttribute("href", "javascript:;");
-					a.addEventListener("click", makeListener(accumulatedUrl)));
+					a.addEventListener("click", makeListener(accumulatedUrl));
 					a.appendChild(document.createTextNode(e.title));
 					document.getElementById("tree").appendChild(a);
 					document.getElementById("tree").appendChild(document.createTextNode("/"));

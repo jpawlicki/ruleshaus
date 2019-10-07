@@ -32,15 +32,6 @@ public class Handler implements HttpHandler {
 	@Override
 	public void handle(HttpExchange exchange) throws IOException {
 		URI uri = exchange.getRequestURI();
-		if ("http".equals(uri.getScheme()) && !"localhost".equals(uri.getHost())) {
-			try {
-				exchange.getResponseHeaders().set("Location", new URI("https", uri.getHost(), uri.getPath(), uri.getFragment()).toString());
-				exchange.sendResponseHeaders(301, 0);
-			} catch (URISyntaxException e) {
-				throw new IOException("Failed to create Location URI.", e);
-			}
-			return;
-		}
 		if ("GET".equals(exchange.getRequestMethod())) {
 			String path = exchange.getRequestURI().getPath();
 			if (path.startsWith("/json/") && responses.containsKey(path.substring("/json".length()))) {
