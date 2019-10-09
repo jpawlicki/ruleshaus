@@ -16,7 +16,8 @@
 			{"title": "Action Resolution", "url": "action_resolution", "pages": [
 				{"title": "Dungeon World", "source": "dungeonworldsrd.com", "url": "dungeon_world"},
 				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"},
-				{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"}
+				{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"},
+				{"title": "Fudge", "source": "Fudge SRD", "url": "fudge"}
 			]},
 			{"title": "Character Advancement", "url": "character_advancement"},
 			{"title": "Character Creation", "url": "character_creation"}
