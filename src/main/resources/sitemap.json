@@ -11,7 +11,7 @@
 	]},
 	{"title": "Dynamics", "url": "dynamics"},
 	{"title": "Mechanics", "url": "mechanics", "pages": [
-		{"title": "Board Games", "url": "bg"},
+		{"title": "Tabletop Games", "url": "tg"},
 		{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
 			{"title": "Action Resolution", "url": "action_resolution", "pages": [
 				{"title": "Dungeon World", "source": "dungeonworldsrd.com", "url": "dungeon_world"},
@@ -22,6 +22,7 @@
 			{"title": "Character Advancement", "url": "character_advancement"},
 			{"title": "Character Creation", "url": "character_creation"}
 		]},
+		{"title": "Physical Games", "url": "pg"},
 		{"title": "Video Games", "url": "vg"}
 	]},
 	{"title": "Contact", "url": "contact"},

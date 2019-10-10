@@ -1,17 +1,16 @@
 <html>
 	<head>
 		<title>rule.haus</title>
-		<!-- TODO - Title -->
-		<!-- TODO - Favicon -->
+		<link rel="icon" href="/favicon.png" />
 		<meta name="viewport" content="width=device-width" />
+		<meta name="description" content="An open-source collection of board, video, and role-playing game design topics and techniques." />
 		<script>
-			// Redirect to secure context if possible, since we use subtle.crypto for hashing.
+			// Redirect to secure context if possible.
 			if (window.isSecureContext != undefined && !window.isSecureContext && location.protocol != "https:") {
 				location.replace("https:" + window.location.href.substring(window.location.protocol.length));
 			}
 		</script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.0/showdown.min.js"></script>
-
 		<style>
 			body {
 				--primary_dark:   #5d4037;
@@ -165,22 +164,12 @@
 				req.send();
 			}
 
-			function loadPage(url, push=true) {
-				// TODO: Some sort of loading indicator.
-				if (push) history.pushState({"url": url}, "", url);
+			function loadPage(url) {
 				getPageData(url, renderPage);
 			}
 
-			async function hash(text) {
-				if (crypto.subtle != undefined) {
-					return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder('utf-8').encode(text)))).map(b => ('00' + b.toString(16)).slice(-2)).join('');
-				} else {
-					return "";
-				}
-			}
-
-			async function renderPage(url, data) {
-				document.getElementById("article").innerHTML = new showdown.Converter({"noHeaderId": true}).makeHtml(data.text.replace(/</g,"&lt;"));
+			function renderPage(url, data) {
+				document.getElementById("article").innerHTML = new showdown.Converter({"prefixHeaderId": "topic_"}).makeHtml(data.text.replace(/</g,"&lt;"));
 				document.getElementById("title").innerHTML = "";
 				document.getElementById("title").appendChild(document.createTextNode(data.title));
 				document.getElementById("source").innerHTML = "";
@@ -193,42 +182,37 @@
 					let li = document.createElement("li");
 					li.appendChild(a);
 					document.getElementById("outline").appendChild(li);
-					let anchor = document.createElement("a");
-					let h = await hash(a.innerText);
-					anchor.setAttribute("name", h);
-					a.setAttribute("href", "#" + h);
-					item.appendChild(anchor);
+					a.setAttribute("href", "#" + item.id);
 				}
 				document.getElementById("subpages").innerHTML = "";
 				if (data.subpages.length > 0) {
 					for (let p of data.subpages) {
 						let a = document.createElement("a");
-						a.setAttribute("href", "javascript:;");
-						a.addEventListener("click", () => loadPage((url.endsWith("/") ? url.substring(0, url.length - 1) : url) + "/" + p.url));
+						a.setAttribute("href", (url.endsWith("/") ? url.substring(0, url.length - 1) : url) + "/" + p.url);
 						a.appendChild(document.createTextNode(p.title));
 						document.getElementById("subpages").appendChild(a);
 					}
 				}
-				document.getElementById("tree").innerHTML = "";
 				data.path = data.path.splice(1);
+				{
+					let accumulatedTitle = "rules.haus";
+					for (let e of data.path) accumulatedTitle = e.title + " - " + accumulatedTitle;
+					document.title = accumulatedTitle;
+				}
 				if (data.path.length > 0) data.path.pop();
 				let accumulatedUrl = "";
-				function makeListener(url) {
-					return () => loadPage(url);
-				}
+				document.getElementById("tree").innerHTML = "";
 				for (let e of data.path) {
 					accumulatedUrl += "/" + e.url;
 					let a = document.createElement("a");
-					a.setAttribute("href", "javascript:;");
-					a.addEventListener("click", makeListener(accumulatedUrl));
+					a.setAttribute("href", accumulatedUrl);
 					a.appendChild(document.createTextNode(e.title));
 					document.getElementById("tree").appendChild(a);
 					document.getElementById("tree").appendChild(document.createTextNode("/"));
 				}
 			}
 
-			window.onpopstate = e => { if (e.state != null) loadPage(e.state.url, false) };
-			loadPage(window.location.pathname, false);
+			loadPage(window.location.pathname);
 		</script>
 	</body>
 </html>
