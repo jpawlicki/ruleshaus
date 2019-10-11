@@ -113,6 +113,7 @@
 				justify-content: space-around;
 				margin-top: 1em;
 				padding-top: 1em;
+				margin-bottom: 2em;
 			}
 
 			#subpages a {
@@ -195,7 +196,7 @@
 				}
 				data.path = data.path.splice(1);
 				{
-					let accumulatedTitle = "rules.haus";
+					let accumulatedTitle = "rule.haus";
 					for (let e of data.path) accumulatedTitle = e.title + " - " + accumulatedTitle;
 					document.title = accumulatedTitle;
 				}

@@ -52,9 +52,6 @@ appengine {
 test {
 	useJUnit()
 	testLogging.showStandardStreams = true
-	onOutput { descriptor, event ->
-		logger.lifecycle("test: " + descriptor + ": " + event.message )
-	}
 	afterTest { descriptor, result ->
 	  logger.lifecycle("test: " + descriptor + ": " + result )
 	}

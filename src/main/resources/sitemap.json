@@ -1,29 +1,34 @@
 {"title": "rule.haus", "url": "", "pages": [
-	{"title": "Aesthetics", "url": "aesthetics", "pages": [
-		{"title": "Discovery", "url": "discovery"},
-		{"title": "Sensation", "url": "sensation"},
-		{"title": "Fellowship", "url": "fellowship"},
-		{"title": "Challenge", "url": "challenge"},
-		{"title": "Narrative", "url": "narrative"},
-		{"title": "Submission", "url": "submission"},
-		{"title": "Expression", "url": "expression"},
-		{"title": "Fantasy", "url": "fantasy"}
-	]},
-	{"title": "Dynamics", "url": "dynamics"},
-	{"title": "Mechanics", "url": "mechanics", "pages": [
-		{"title": "Tabletop Games", "url": "tg"},
-		{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
-			{"title": "Action Resolution", "url": "action_resolution", "pages": [
-				{"title": "Dungeon World", "source": "dungeonworldsrd.com", "url": "dungeon_world"},
-				{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"},
-				{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"},
-				{"title": "Fudge", "source": "Fudge SRD", "url": "fudge"}
-			]},
+	{"title": "Games", "url": "games", "pages": [
+		{"title": "Aesthetics", "url": "aesthetics", "pages": [
+			{"title": "Discovery", "url": "discovery"},
+			{"title": "Sensation", "url": "sensation"},
+			{"title": "Fellowship", "url": "fellowship"},
+			{"title": "Challenge", "url": "challenge"},
+			{"title": "Narrative", "url": "narrative"},
+			{"title": "Submission", "url": "submission"},
+			{"title": "Expression", "url": "expression"},
+			{"title": "Fantasy", "url": "fantasy"}
+		]},
+		{"title": "Dynamics", "url": "dynamics"},
+		{"title": "Mechanics", "url": "mechanics"},
+		{"title": "Field", "url": "field", "pages": [
+			{"title": "Tag", "url": "tag"}
+		]},
+		{"title": "Parlor", "url": "parlor", "pages": []},
+		{"title": "Tabletop", "url": "tabletop", "pages": [
+			{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
+				{"title": "Action Resolution", "url": "action_resolution", "pages": [
+					{"title": "Dungeon World", "source": "dungeonworldsrd.com", "url": "dungeon_world"},
+					{"title": "Dungeons & Dragons 5e", "source": "Player's Handbook", "url": "dungeons_and_dragons_5e"},
+					{"title": "Fate Core", "source": "fate-srd.com", "url": "fatecore"},
+					{"title": "Fudge", "source": "Fudge SRD", "url": "fudge"}
+				]},
 			{"title": "Character Advancement", "url": "character_advancement"},
 			{"title": "Character Creation", "url": "character_creation"}
+			]}
 		]},
-		{"title": "Physical Games", "url": "pg"},
-		{"title": "Video Games", "url": "vg"}
+		{"title": "Computer", "url": "computer", "pages": []}
 	]},
 	{"title": "Contact", "url": "contact"},
 	{"title": "Contribute", "url": "contribute"}
