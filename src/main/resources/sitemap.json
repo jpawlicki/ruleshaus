@@ -10,13 +10,41 @@
 			{"title": "Expression", "url": "expression"},
 			{"title": "Fantasy", "url": "fantasy"}
 		]},
-		{"title": "Dynamics", "url": "dynamics"},
-		{"title": "Mechanics", "url": "mechanics"},
+		{"title": "Complexity", "url": "complexity"},
+		{"title": "Computer", "url": "computer", "pages": []},
+		{"title": "Dynamics", "url": "dynamics", "pages": [
+			{"title": "Analysis Paralysis", "url": "analysis_paralysis"},
+			{"title": "Anti-Leader", "url": "anti_leader"},
+			{"title": "Bluffing", "url": "bluffing"},
+			{"title": "Catch-Up", "url": "catch_up"},
+			{"title": "Checkout", "url": "checkout"},
+			{"title": "Inertial", "url": "inertial"},
+			{"title": "King-Maker", "url": "king_maker"},
+			{"title": "Prediction", "url": "prediction"},
+			{"title": "Risk-Reward Analysis", "url": "risk_reward_analysis"}
+		]},
 		{"title": "Field", "url": "field", "pages": [
-			{"title": "Tag", "url": "tag"}
+			{"title": "Examples", "url": "examples", "pages": [
+				{"title": "Race", "url": "race"},
+				{"title": "Tag", "url": "tag"}
+			]}
+		]},
+		{"title": "Information", "url": "information"},
+		{"title": "Mechanics", "url": "mechanics", "pages": [
+			{"title": "Bidding", "url": "bidding"},
+			{"title": "Player Elimination", "url": "player_elimination"}
 		]},
 		{"title": "Parlor", "url": "parlor", "pages": []},
+		{"title": "State", "url": "state"},
 		{"title": "Tabletop", "url": "tabletop", "pages": [
+			{"title": "Examples", "url": "examples", "pages": [
+				{"title": "Chess", "url": "chess"},
+				{"title": "Evolution", "url": "evolution"},
+				{"title": "Hanabi", "url": "hanabi"},
+				{"title": "New Angeles", "url": "new_angeles"},
+				{"title": "Poker", "url": "poker"},
+				{"title": "Rock-Paper-Scissors", "url": "rock_paper_scissors"}
+			]},
 			{"title": "Tabletop RPGs", "url": "ttrpg", "pages": [
 				{"title": "Action Resolution", "url": "action_resolution", "pages": [
 					{"title": "Examples", "url": "examples", "pages": [
@@ -32,7 +60,7 @@
 			{"title": "Character Creation", "url": "character_creation"}
 			]}
 		]},
-		{"title": "Computer", "url": "computer", "pages": []}
+		{"title": "Winning", "url": "winning"}
 	]},
 	{"title": "Contact", "url": "contact"},
 	{"title": "Contribute", "url": "contribute"}

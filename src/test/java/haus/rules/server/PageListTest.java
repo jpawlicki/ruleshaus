@@ -42,6 +42,16 @@ public class PageListTest {
 		assertTrue(errors.isEmpty());
 	}
 
+	@Test public void testUrlStyle() throws Exception {
+		Pattern allowed = Pattern.compile("/|(/[a-z0-9_]+)+");
+		List<String> errors = new ArrayList<>();
+		for (String url : PageList.loadPages("/sitemap.json").keySet()) {
+			if (!allowed.matcher(url).matches()) errors.add(url + " doesn't match the allowed pattern (a-z, 0-9, and underscores only)");
+		}
+		for (String s : errors) System.out.println(s);
+		assertTrue(errors.isEmpty());
+	}
+
 	@Test public void testCommonTypos() throws Exception {
 		Map<String, String> typos = new HashMap<>();
 		List<String> errors = new ArrayList<>();

@@ -95,6 +95,27 @@
 				grid-column: 2;
 			}
 
+			#article h1 {
+				font-size: 1.5em;
+				font-weight: bold;
+			}
+
+			#article h2 {
+				font-size: 1.2em;
+				font-weight: bold;
+			}
+
+			#article h3 {
+				font-size: 1.0em;
+				font-weight: bold;
+			}
+
+			#article h4 {
+				font-size: 1.0em;
+				font-weight: normal;
+				font-style: italic;
+			}
+
 			#outline {
 				border-right: 2px solid var(--divider);
 				grid-column: 1;
@@ -103,6 +124,11 @@
 				margin: 0;
 				overflow: auto;
 				padding: 0.5em;
+			}
+
+			#outline ul {
+				list-style-type: none;
+				padding-left: 1em;
 			}
 
 			#subpages {
@@ -125,6 +151,19 @@
 			@media print {
 				body {
 					grid-template-columns: 0 1fr;
+					background-color: none;
+				}
+				article {
+					margin: 0;
+				}
+				#tree {
+					display: none;
+				}
+				#logo {
+					display: none;
+				}
+				#title {
+					color: var(--accent);
 				}
 				#outline {
 					display: none;
@@ -151,8 +190,8 @@
 			<h2 id="source"></h2>
 		</section>
 		<ul id="outline"></ul>
-		<section id="article">
-		</section>
+		<article id="article">
+		</article>
 		<section id="subpages">
 		</section>
 		<script>
@@ -177,13 +216,40 @@
 				if (data.source != undefined) document.getElementById("source").appendChild(document.createTextNode(data.source));
 				let level = 0;
 				document.getElementById("outline").innerHTML = "";
-				for (let item of document.querySelectorAll("#article > h1, #article > h2, #article > h3")) {
-					let a = document.createElement("a");
-					a.appendChild(document.createTextNode(item.innerText));
-					let li = document.createElement("li");
-					li.appendChild(a);
-					document.getElementById("outline").appendChild(li);
-					a.setAttribute("href", "#" + item.id);
+				{ // Outline tree.
+					let root = {e: undefined, children: []};
+					let stack = [root];
+					for (let item of document.querySelectorAll("#article > h1, #article > h2, #article > h3")) {
+						let depth = parseInt(item.tagName.substring(1));
+						while (stack.length > depth) stack.pop();
+						while (stack.length < depth - 1) { // empty parents
+							let ne = {e: undefined, children: []};
+							stack[stack.length - 1].children.push(ne);
+							stack.push(ne);
+						}
+						let ne = {e: item, children: []}
+						stack[stack.length - 1].children.push(ne);
+						stack.push(ne);
+					}
+					function addOutlineElements(parent, node) {
+						let li = document.createElement("li");
+						if (node.e != undefined) {
+							let a = document.createElement("a");
+							a.appendChild(document.createTextNode(node.e.innerText));
+							a.setAttribute("href", "#" + node.e.id);
+							li.appendChild(a);
+						}
+						if (node.children.length > 0) {
+							let ul = document.createElement("ul");
+							for (let c of node.children) {
+								addOutlineElements(ul, c);
+							}
+							li.appendChild(ul);
+						}
+						parent.appendChild(li);
+					}
+					let p = document.getElementById("outline");
+					for (let e of root.children) addOutlineElements(p, e);
 				}
 				document.getElementById("subpages").innerHTML = "";
 				if (data.subpages.length > 0) {
