@@ -21,7 +21,8 @@
 			{"title": "Inertial", "url": "inertial"},
 			{"title": "King-Maker", "url": "king_maker"},
 			{"title": "Prediction", "url": "prediction"},
-			{"title": "Risk-Reward Analysis", "url": "risk_reward_analysis"}
+			{"title": "Risk-Reward Analysis", "url": "risk_reward_analysis"},
+			{"title": "Teamwork", "url": "teamwork"}
 		]},
 		{"title": "Field", "url": "field", "pages": [
 			{"title": "Examples", "url": "examples", "pages": [
